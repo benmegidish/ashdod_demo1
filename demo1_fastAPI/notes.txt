@@ -1,0 +1,36 @@
+
+
+Advantages:
+---------------------------
+1. Data validation- if an end point is expecting to some data type
+and the user sends the wrong data fast api returns an automatic error message to the client
+so data validation is made automatically!
+
+@app.get("/users/{id}")
+def getUser(id:int = Path( description="This is the ID of the user you want to fetch")):
+    response = utils.fetchDataById(id)
+    return response
+
+In this example the user is expected to send some id with the path as a path parameter
+so a specific user can be fetched from the server 
+{id} and include the id and its data type into the function gonna extract the id from the URL
+
+*Note:
+For query parameters
+example: "/?something = something"
+just include the name of the query parameter in the function
+to make it optional and not a must just add a * before each parameter
+define the optional parameter with = None
+
+
+Post request:
+from pydantic import BaseModel
+class Item(BaseModel):
+    fname :str 
+    lname: str
+    age: int
+
+pydantic is a base class to determane how the data structure will be recieved from 
+thr body of the request itself!
+also converts the data to a json format!
+Not working without it!

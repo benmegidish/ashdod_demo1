@@ -25,6 +25,7 @@ def fetchDataById(id):
 
 def createData(data):
     response = fetchData()
+    print(response , "This is the response from crf")
     try:
         response.append(data)
         with open('./data/users.json', 'w') as file:
